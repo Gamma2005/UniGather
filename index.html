@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniGather</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slider = document.getElementById('slider');
+            const slides = slider.children.length;
+            if (index >= slides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slides - 1;
+            } else {
+                currentIndex = index;
+            }
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-green-400 text-white min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-black p-1 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <img src="img/logo.png" alt="UniGather Logo" class="h-20 sm:h-24 md:h-28">
+            <span class="text-2xl md:text-5xl text-gray-400  font-bold font-serif">UGather</span>
+        </div>
+        <div class="hidden lg:flex space-x-6 text-lg justify-center flex-grow">
+            <a href="#" class="text-teal-400 hover:text-white">Home</a>
+            <a href="#" class="text-teal-400 hover:text-white">Events</a>
+            <a href="#" class="text-teal-400 hover:text-white">My Events</a>
+            <a href="#" class="text-teal-400 hover:text-white">Create Events</a>
+        </div>
+        <div class="hidden lg:flex items-center space-x-2">
+            <input type="text" placeholder="Search" class="px-2 py-1 rounded text-black w-40 lg:w-60">
+            <span class="text-teal-400 hover:text-white cursor-pointer">Login</span>
+            <i class="fas fa-user text-teal-400 hover:text-white"></i>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="flex-grow text-black text-center pt-16">
+        <!-- Hero Section -->
+        <section class="pt-16 ">
+            <h1 class="text-4xl md:text-8xl font-semibold font-serif">WELCOME TO UNIGATHER</h1>
+            <p class="mt-16 text-lg md:text-xl max-w-3xl mx-auto  leading-relaxed pb-6">
+                "Explore and register for local events effortlessly, stay updated on upcoming gatherings, and connect with your community—all in one place, making event discovery and participation easier than ever."
+            </p>
+            <div class="flex justify-center space-x-4 bg-slate-800 mt-16">
+                <a href="#" class="text-white hover:text-slate-500 text-2xl"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white hover:text-slate-500 text-2xl"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white hover:text-slate-500 text-2xl"><i class="fab fa-facebook"></i></a>
+            </div>
+        </section>
+
+        <!-- Sliding Gallery Section -->
+        <section class="w-full bg-black py-10">
+            <h2 class="text-8xl font-bold text-white mb-8">Event Highlits!</h2>
+            <div class="relative overflow-hidden w-full max-w-4xl mx-auto">
+                <div class="flex transition-transform duration-500 ease-in-out" id="slider">
+                    <div class="flex-shrink-0 w-full">
+                        <img src="https://picsum.photos/800/400?image=1" alt="Slide 1" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-shrink-0 w-full">
+                        <img src="https://picsum.photos/800/400?image=2" alt="Slide 2" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-shrink-0 w-full">
+                        <img src="https://picsum.photos/800/400?image=3" alt="Slide 3" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex-shrink-0 w-full">
+                        <img src="https://picsum.photos/800/400?image=4" alt="Slide 4" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                </div>
+                <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <div class="w-full bg-black py-10 border-b-4 border-gray-900">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 container mx-auto px-4">
+                <div class="bg-gradient-to-r from-purple-500 to-green-400 p-6 rounded-3xl text-center flex flex-col items-center">
+                    <img src="img/create_event_logo.png" alt="Create Event Logo" class="h-16 md:h-20 mb-2">
+                    <p class="font-bold text-lg md:text-xl">Create Event</p>
+                </div>
+                <div class="bg-gradient-to-r from-purple-500 to-green-400 p-6 rounded-3xl text-center flex flex-col items-center">
+                    <img src="img/my_events_logo.png" alt="My Events Logo" class="h-16 md:h-20 mb-2">
+                    <p class="font-bold text-lg md:text-xl">My Events</p>
+                </div>
+                <div class="bg-gradient-to-r from-purple-500 to-green-400 p-6 rounded-3xl text-center flex flex-col items-center">
+                    <img src="img/discover_events_logo.png" alt="Discover Events Logo" class="h-16 md:h-20 mb-2">
+                    <p class="font-bold text-lg md:text-xl">Discover Events</p>
+                </div>
+                <div class="bg-gradient-to-r from-purple-500 to-green-400 p-6 rounded-3xl text-center flex flex-col items-center">
+                    <img src="img/trending_events_logo.png" alt="Trending Events Logo" class="h-16 md:h-20 mb-2">
+                    <p class="font-bold text-lg md:text-xl">Trending Events</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery Section -->
+        <section class="w-full bg-gradient-to-b from-purple-500 to-green-400 py-10">
+            <h2 class="text-8xl font-bold text-black mb-8 border-12 border-gray-900">Event Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto px-4">
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/200" alt="Event Image 1" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/201" alt="Event Image 2" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/202" alt="Event Image 3" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/203" alt="Event Image 4" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/204" alt="Event Image 5" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/205" alt="Event Image 6" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/206" alt="Event Image 7" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border-4 border-black">
+                    <img src="https://picsum.photos/300/207" alt="Event Image 8" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center py-6 mt-auto border-t-4 border-gray-900">
+        <div class="flex flex-wrap justify-center space-x-4">
+            <a href="#" class="text-teal-400 hover:text-white">About Us</a>
+            <a href="#" class="text-teal-400 hover:text-white">Contact</a>
+            <a href="#" class="text-teal-400 hover:text-white">Privacy</a>
+        </div>
+        <p class="mt-4 text-gray-400">© 2025 UniGather. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
