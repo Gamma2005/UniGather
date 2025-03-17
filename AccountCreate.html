@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000);
+
+            // Password validation
+            const form = document.querySelector('form');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+
+            form.addEventListener('submit', function (e) {
+                if (password.value !== confirmPassword.value) {
+                    e.preventDefault();
+                    alert('Passwords do not match!');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="bg-gradient-to-tr from-blue-500 to-purple-500 min-h-screen flex items-center justify-center overflow-hidden">
+
+    <div class="flex flex-col md:flex-row items-center justify-center w-full h-full animate-fadeIn p-4">
+
+        
+        <div class="hidden md:flex flex-col items-center justify-center w-[70%] ">
+        <!-- Gallery Section -->
+            <div class="relative w-full h-[600px] max-w-4xl flex items-center justify-center">
+                <div class="absolute inset-0">
+                    <div class="slide active w-full h-full shadow-2xl">
+                        <img src="https://th.bing.com/th/id/OIP.pXDtpx-qvZDLlbyqkML9bwHaE7?pid=ImgDet&w=474&h=315&rs=1" alt="Gallery Image 1" class="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                    </div>
+                    <div class="slide w-full h-full shadow-2xl">
+                        <img src="https://www.hedgethink.com/wp-content/uploads/2020/01/corporate-events.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                    </div>
+                    <div class="slide w-full h-full shadow-2xl">
+                        <img src="https://www.johntobeyevents.com/wp-content/uploads/Feature_Corporate.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                    </div>
+                    <div class="slide w-full h-full shadow-2xl">
+                        <img src="https://www.hedgethink.com/wp-content/uploads/2020/01/corporate-events.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                    </div>
+                </div>
+            </div>
+            <!-- Privacy Policy Checkbox -->
+            <div class="flex items-center mt-8">
+                <input type="checkbox" id="privacy-policy" name="privacy-policy" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300 rounded" required>
+                <label for="privacy-policy" class="ml-2 block text-white font-semibold">I agree to the <a href="#" class="underline text-blue-300 hover:text-blue-500">Privacy Policy</a></label>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="bg-white/20 backdrop-blur-xl p-10 rounded-3xl shadow-2xl w-full max-w-lg md:w-[30%] flex items-center justify-center border border-white/30 animate-fadeIn m-4">
+
+            <div class="w-full">
+                <h2 class="text-4xl font-extrabold mb-10 text-center text-white drop-shadow-lg">Create an Account</h2>
+                <form action="#" method="POST" class="space-y-6">
+
+                    <!-- Username -->
+                    <div>
+                        <label for="username" class="block text-white font-semibold mb-2">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" class="w-full px-6 py-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" required autofocus />
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-white font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full px-6 py-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-white font-semibold mb-2">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" class="w-full px-6 py-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="confirm-password" class="block text-white font-semibold mb-2">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" class="w-full px-6 py-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                    </div>
+
+                    <!-- Account Type -->
+                    <div>
+                        <label for="account-type" class="block text-white font-semibold mb-2">Account Type</label>
+                        <select id="account-type" name="account-type" class="w-full px-6 py-4 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="">Select Account Type</option>
+                            <option value="creator">Event Creator</option>
+                            <option value="joiner">Event Joiner</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-4 rounded-full hover:scale-105 transform transition duration-300 hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Create Account
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
